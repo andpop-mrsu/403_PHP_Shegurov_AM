@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Арифметическая прогрессия</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main class="layout">
+    <header class="hero">
+        <div class="hero__badge">Task03 · SPA · Slim · SQLite</div>
+        <h1>Игра «Арифметическая прогрессия»</h1>
+        <p class="hero__text">
+            Угадайте пропущенное число в арифметической прогрессии из 10 элементов.
+        </p>
+    </header>
+
+    <section class="panel panel--accent">
+        <h2>Новая игра</h2>
+        <form id="start-form" class="stack">
+            <label for="player_name">Имя игрока</label>
+            <input
+                    id="player_name"
+                    name="player_name"
+                    type="text"
+                    maxlength="50"
+                    autocomplete="name"
+                    placeholder="Например, Алексей"
+                    required
+            >
+            <button type="submit">Начать игру</button>
+        </form>
+    </section>
+
+    <section class="panel hidden" id="round-card">
+        <h2>Текущий вопрос</h2>
+        <p class="muted">Найдите число, скрытое вместо точек.</p>
+        <div class="question-box">
+            <code id="progression-text">...</code>
+        </div>
+
+        <form id="answer-form" class="stack">
+            <label for="answer">Ваш ответ</label>
+            <input
+                    id="answer"
+                    name="answer"
+                    type="number"
+                    step="1"
+                    placeholder="Введите число"
+                    required
+            >
+            <button type="submit">Проверить</button>
+        </form>
+    </section>
+
+    <section class="panel hidden" id="result-card">
+        <h2>Результат</h2>
+        <div id="result-box" aria-live="polite"></div>
+    </section>
+
+    <section class="panel hidden alert" id="error-card" role="alert" aria-live="polite"></section>
+
+    <section class="panel">
+        <div class="panel__head">
+            <div>
+                <h2>История игр</h2>
+                <p class="muted">Ниже отображаются все игры, сохраненные в SQLite.</p>
+            </div>
+            <button id="refresh-history" type="button">Обновить</button>
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Игрок</th>
+                    <th>Старт</th>
+                    <th>Завершение</th>
+                    <th>Статус</th>
+                    <th>Итог</th>
+                    <th>Ходов</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody id="games-body">
+                <tr>
+                    <td colspan="8">Загрузка...</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="panel hidden" id="steps-card">
+        <h2>Подробности игры</h2>
+        <div id="steps-box"></div>
+    </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
